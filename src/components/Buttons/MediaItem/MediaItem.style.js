@@ -5,10 +5,10 @@ const { borderRadius } = themesSetting;
 
 export default StyleSheet.create({
   container: {
-    backgroundColor: '#59ABF2',
-    zIndex: -1,
-    borderTopLeftRadius: borderRadius.lg,
-    borderTopRightRadius: borderRadius.lg,
-    padding: 20
+    flex: 1,
+    margin: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: borderRadius.xs
   }
 });

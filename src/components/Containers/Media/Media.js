@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Animated, Easing } from 'react-native';
+import { Animated, Easing } from 'react-native';
 import PropTypes from 'prop-types';
 
 import styles from './Media.style';
+import MediaItemList from '../../List/MediaItemList/MediaItemList';
 
 const Media = ({ offset, isActive }) => {
   const [containerHeight, setContainerHeight] = useState(null);
@@ -44,18 +45,13 @@ const Media = ({ offset, isActive }) => {
         {
           minHeight: offset + minHeight,
           marginBottom: -offset,
-          paddingBottom: offset,
+          paddingBottom: offset + styles.container.padding,
           transform: [{ translateY }],
           opacity: isReady ? 1 : 0
         }
       ]}
     >
-      <View>
-        <Text>{offset}</Text>
-        <Text>{offset}</Text>
-        <Text>{offset}</Text>
-        <Text>{offset}</Text>
-      </View>
+      <MediaItemList />
     </Animated.View>
   );
 };
