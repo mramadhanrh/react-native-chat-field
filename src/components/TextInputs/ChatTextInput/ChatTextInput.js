@@ -2,16 +2,13 @@ import React from 'react';
 import { View, TextInput } from 'react-native';
 import PropTypes from 'prop-types';
 
-import MediaButton from '../../Buttons/MediaButton/MediaButton';
 import styles from './ChatTextInput.style';
 
-const ChatTextInput = ({ children }) => {
+const ChatTextInput = ({ button, children }) => {
   return (
     <View style={styles.container}>
       <View style={styles.wrapper}>
-        <View style={styles.iconView}>
-          <MediaButton style={styles.mediaIcon} />
-        </View>
+        <View style={styles.iconView}>{button}</View>
         <TextInput style={styles.input} multiline />
       </View>
       {children}
@@ -20,11 +17,13 @@ const ChatTextInput = ({ children }) => {
 };
 
 ChatTextInput.propTypes = {
-  children: PropTypes.element
+  children: PropTypes.element,
+  button: PropTypes.element
 };
 
 ChatTextInput.defaultProps = {
-  children: null
+  children: null,
+  button: null
 };
 
 export default ChatTextInput;

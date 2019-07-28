@@ -6,29 +6,31 @@ import SendButton from '../../Buttons/SendButton/SendButton';
 import Media from '../Media/Media';
 
 import styles from './Chat.style';
+import MediaButton from '../../Buttons/MediaButton/MediaButton';
 
 const Chat = () => {
-  const [height, setHeight] = useState(0);
+  const [fieldHeight, setFieldHeight] = useState(0);
+  const [isMediaActive, setMediaActive] = useState(false);
+
+  const onMediaPress = () => {
+    setMediaActive(!isMediaActive);
+  };
 
   return (
     <View style={styles.container}>
       <ChatField
         onLayout={e => {
           const { height } = e.nativeEvent.layout;
-          setHeight(height);
+          setFieldHeight(height);
         }}
       >
-        <View style={styles.wrapper}>
-          <ChatTextInput>
-            <View style={styles.iconView}>
-              <SendButton />
-            </View>
-          </ChatTextInput>
-        </View>
+        <ChatTextInput button={<MediaButton onPress={() => onMediaPress()} />}>
+          <View style={styles.iconView}>
+            <SendButton />
+          </View>
+        </ChatTextInput>
       </ChatField>
-      <View>
-        <Media offset={height} />
-      </View>
+      <Media offset={fieldHeight} isActive={isMediaActive} />
     </View>
   );
 };
